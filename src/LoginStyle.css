@@ -1,0 +1,24 @@
+#login {
+    background-image: url("https://static-uc.olist.ng/upload/20201002/19jo3ufh1ibl.jpg");
+    background-size: cover;
+    background-position :"center";
+    background-repeat : "no-repeat"; 
+     background-size : "cover"; 
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 80%;
+    height: 600px
+};
+
+.form {
+    background: gray;
+    width: 280px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    position: absolute;
+    z-index: 10;
+    padding: 60px 60px 80px;
+    left: 50%;
+    margin-left: -230px;
+    opacity: 0.85;
+}
