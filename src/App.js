@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
         <Route exact path = "/" component = { LoginPage} />
-        <Route exact path = "/summary" component = { EmployeeSummary } />
+        <Route exact path = "/summary" render = { (routeProps) => <EmployeeSummary {...routeProps} /> } />
         <Route exact path = "/personaldata" component = { DataPage } />
         <Route exact path = "/info" component = { InfoPage } />
         <Route exact path = "/bank" component = { BankPage } />
