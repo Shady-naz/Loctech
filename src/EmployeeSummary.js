@@ -7,6 +7,7 @@ import SummaryBox from "./SummaryBox";
 import Sidebar from "./Sidebar";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import AuthMessage from "./AuthMessage";
 import FlashMessage from "react-flash-message";
 import {headerStyle, mainLinkStyle, paperStyle} from "./styles/EmployeeSummaryStyles";
 
@@ -27,8 +28,8 @@ export default function EmployeeSummary(props) {
     const employee = Object.keys(employeeObject)
         return (
             <Paper style={paperStyle}>
+                <FlashMessage duration = {3000}> <AuthMessage>  {props.location.state.msg} </AuthMessage> </FlashMessage> 
                 <Grid container spacing={3}>
-                    <FlashMessage duration = {3000}> <h1> {props.location.state.msg} </h1> </FlashMessage>    
                     <Grid item xs={12}>
                      <Link to = "/"> <ArrowBackIosIcon style = {{fontSize: "large", width: "50px", height: "25px", color: "black"}} /> </Link>
                         <Paper style={headerStyle}>

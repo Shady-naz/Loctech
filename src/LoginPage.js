@@ -4,6 +4,7 @@ import {useState} from "react";
 import {Redirect} from "react-router-dom";
 import LoginForm from "./LoginForm"
 import FlashMessage from "react-flash-message";
+import AuthMessage from "./AuthMessage";
 
 export default function LoginPage () {
 
@@ -57,7 +58,7 @@ export default function LoginPage () {
                 (
                     <>
                     <FlashMessage duration = {3000}> 
-                        <h1> Invalid Username or Password </h1>
+                        <AuthMessage> Invalid Username or Password </AuthMessage>
                     </FlashMessage>
                     <LoginForm signinUser = {signinUser} handleInputChange = {handleInputChange}/>
                     </> 
