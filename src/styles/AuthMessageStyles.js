@@ -6,6 +6,7 @@ const styles = makeStyles ({
         justifyContent: "center",
         alignItems: "center",
         width: "80%",
+        color: "white",
         height: "45px",
         margin: "0 auto",
         border: "2px solid #c728ba",
