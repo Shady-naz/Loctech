@@ -52,21 +52,21 @@ export default function LoginPage () {
                     state: {msg: `Successfully Logged You in, as ${newUser.username} cheers`}
                 }}
                 /> )   
-        : (
-            <>
-            {error !== undefined ? 
-                (
-                    <>
-                    <FlashMessage duration = {3000}> 
-                        <AuthMessage> Invalid Username or Password </AuthMessage>
-                    </FlashMessage>
-                    <LoginForm signinUser = {signinUser} handleInputChange = {handleInputChange}/>
-                    </> 
-                )
                 : (
-               <LoginForm signinUser = {signinUser} handleInputChange = {handleInputChange}/>
+                <>
+                    {error !== undefined ? 
+                        (
+                            <>
+                                <FlashMessage duration = {3000}> 
+                                    <AuthMessage> Invalid Username or Password </AuthMessage>
+                                </FlashMessage>
+                                <LoginForm signinUser = {signinUser} handleInputChange = {handleInputChange}/>
+                            </> 
+                        )
+                        : (
+                        <LoginForm signinUser = {signinUser} handleInputChange = {handleInputChange}/>
+                    )}
+                </>
             )}
-        </>
-    )}
-</Fragment>
+        </Fragment>
     )}

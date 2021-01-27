@@ -70,7 +70,13 @@ export default function Datapage () {
                             </Grid>
                         </Grid>
                         <Grid className = {classes.gridLink} item xs = {12}>
-                            <Link className = {classes.backLinkStyle} to = "/summary"> Back </Link>
+                            <Link className = {classes.backLinkStyle} to = 
+                            {{
+                                pathname:"/summary",
+                                state: {fromSummary: true}
+                            }}> 
+                                Back 
+                            </Link>
                             <Link className = {classes.nextLinkStyle} to = "/info"> Next <ArrowForwardIosIcon style = {{fontSize: "medium"}} /> </Link>
                         </Grid>
                     </Grid>
