@@ -1,5 +1,5 @@
 import Sidebar from "./Sidebar";
-import Paper from "@material-ui/core/paper";
+import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import {Link} from "react-router-dom";
 import Divider from '@material-ui/core/Divider';
