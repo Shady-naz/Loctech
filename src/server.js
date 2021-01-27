@@ -48,10 +48,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
--app.get("/", function (req, res) {
-    +app.get ("/*", (req, res) => {
+app.get("/", function (req, res) {
+    // +app.get ("/*", (req, res) => {
         res.sendFile(path.join(__dirname, "build", "index.html"))
-    });
+    // });
 });
 
 app.use("/api", authRoutes);
