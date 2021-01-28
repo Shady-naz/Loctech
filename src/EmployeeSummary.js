@@ -28,12 +28,14 @@ export default function EmployeeSummary(props) {
     const employee = Object.keys(employeeObject)
         return (
             <Paper style={paperStyle}>
-                <FlashMessage duration = {3000}> <AuthMessage>  {props.location.state.msg} </AuthMessage> </FlashMessage> 
+                { (props.location.state.fromSummary === true) ? ""
+                    :  <FlashMessage duration = {3000}> <AuthMessage>  {props.location.state.msg} </AuthMessage> </FlashMessage> 
+                }
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                     <Link to = "/"> <ArrowBackIosIcon style = {{fontSize: "large", width: "50px", height: "25px", color: "black"}} /> </Link>
+                        <Link to = "/"> <ArrowBackIosIcon style = {{fontSize: "large", width: "50px", height: "25px", color: "black"}} /> </Link>
                         <Paper style={headerStyle}>
-                        <Typography> Employee Summary </Typography>
+                            <Typography> Employee Summary </Typography>
                         </Paper>
                     </Grid>
                     <Sidebar />
