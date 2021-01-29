@@ -1,15 +1,23 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const styles = makeStyles(theme => ({
+    mainPaperStyle: { 
+        flexGrow: 1, 
+        marginLeft: "25px", 
+        marginRight: "25px", 
+        marginTop: "30px", 
+        paddingBottom: "65px",
+        paddingTop: 0,
+        backgroundColor: "#f7f9fa"
+        },
     paperStyle: {
         marginBottom: theme.spacing(25),
-        marginLeft: theme.spacing(3),
+        marginLeft: theme.spacing(1),
         width: "1000px",
         height: "535px",
         display: "flex",
         flexWrap: "wrap",
-        boxSizing: "border-box",
-        marginTop: theme.spacing(0)
+        boxSizing: "border-box"
     },
     headerStyle: {
         padding: theme.spacing(1),
@@ -30,8 +38,12 @@ const styles = makeStyles(theme => ({
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
         marginRight: theme.spacing(40),
-        marginLeft: theme.spacing(4),
-        borderRadius: theme.shape.borderRadius
+        borderRadius: theme.shape.borderRadius,
+        "&:hover": {
+            textDecoration: "none",
+            color: "slateblue",
+            fontSize: "15px"
+        }
     },
     nextLinkStyle: {
         backgroundColor: "#009999", 
@@ -41,12 +53,17 @@ const styles = makeStyles(theme => ({
         paddingLeft: theme.spacing(2),
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
-        marginLeft: theme.spacing(58),
-        borderRadius: theme.shape.borderRadius
+        marginLeft: theme.spacing(64),
+        borderRadius: theme.shape.borderRadius,
+        "&:hover": {
+            textDecoration: "none",
+            color: "slateblue",
+            fontSize: "15px"
+        }
     },
     dividerStyle: {
         marginTop: theme.spacing(5),
-        marginBottom: theme.spacing(1),
+        marginBottom: theme.spacing(10),
         marginLeft: theme.spacing(1)
     },
     gridInputStyle: {

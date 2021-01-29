@@ -38,7 +38,12 @@ import { makeStyles } from "@material-ui/core/styles";
         paddingBottom: theme.spacing(1),
         marginRight: theme.spacing(40),
         marginLeft: theme.spacing(4),
-        borderRadius: theme.shape.borderRadius
+        borderRadius: theme.shape.borderRadius,
+        "&:hover": {
+            textDecoration: "none",
+            color: "slateblue",
+            fontSize: "15px"
+        }
     },
     nextLinkStyle: {
         backgroundColor: "#009999", 
@@ -49,7 +54,12 @@ import { makeStyles } from "@material-ui/core/styles";
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
         marginLeft: theme.spacing(20),
-        borderRadius: theme.shape.borderRadius
+        borderRadius: theme.shape.borderRadius,
+        "&:hover": {
+            textDecoration: "none",
+            color: "slateblue",
+            fontSize: "15px"
+        }
     }
 }));
 

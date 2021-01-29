@@ -49,7 +49,7 @@ export default function LoginPage () {
                 <Redirect to =
                 {{
                     pathname: "/summary",
-                    state: {msg: `Successfully Logged You in, as ${newUser.username} cheers`}
+                    state: {msg: `Successfully Logged You In as, ${newUser.username} Cheers`}
                 }}
                 /> )   
                 : (

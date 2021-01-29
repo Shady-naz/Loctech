@@ -1,9 +1,18 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const styles = makeStyles(theme => ({
+    mainPaperStyle: { 
+        flexGrow: 1, 
+        marginLeft: "25px", 
+        marginRight: "25px", 
+        marginTop: "30px", 
+        paddingBottom: "65px",
+        paddingTop: 0,
+        backgroundColor: "#f7f9fa"
+        },
     paperStyle: {
         marginBottom: theme.spacing(25),
-        marginLeft: theme.spacing(3),
+        marginLeft: theme.spacing(1),
         width: "1000px",
         height: "535px",
         display: "flex",
@@ -19,7 +28,6 @@ const styles = makeStyles(theme => ({
     },
     gridLink: {
         marginTop: theme.spacing(15),
-        // marginLeft: theme.spacing(5)
     },
     backLinkStyle: {
         backgroundColor: "#6c6e69",
@@ -31,7 +39,12 @@ const styles = makeStyles(theme => ({
         paddingBottom: theme.spacing(1),
         marginRight: theme.spacing(40),
         marginLeft: theme.spacing(4),
-        borderRadius: theme.shape.borderRadius
+        borderRadius: theme.shape.borderRadius,
+        "&:hover": {
+            textDecoration: "none",
+            color: "slateblue",
+            fontSize: "15px"
+        }
     },
     nextLinkStyle: {
         backgroundColor: "#009999", 
@@ -42,7 +55,12 @@ const styles = makeStyles(theme => ({
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
         marginLeft: theme.spacing(57),
-        borderRadius: theme.shape.borderRadius
+        borderRadius: theme.shape.borderRadius,
+        "&:hover": {
+            textDecoration: "none",
+            color: "slateblue",
+            fontSize: "15px"
+        }
     },
     dividerStyle: {
         marginTop: theme.spacing(2),

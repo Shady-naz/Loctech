@@ -10,6 +10,7 @@ import styles from "./styles/RemainingPageStyles.js";
 export default function Lastpage () {
     const classes = styles()
     return (
+        <Paper className = {classes.mainPaperStyle}>
         <Grid container spacing={0}>
         <Grid item xs={12}>
             <Paper className={classes.headerStyle}>
@@ -86,6 +87,7 @@ export default function Lastpage () {
             </Grid>
         </Paper>
     </Grid>
+    </Paper>
     )
 }
 

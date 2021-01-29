@@ -5,18 +5,20 @@ import {Link} from "react-router-dom";
 import Divider from '@material-ui/core/Divider';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Typography from "@material-ui/core/Typography";
-import styles from "./styles/DataPageStyle.js";
+import styles from "./styles/DataPageStyles.js";
 
 export default function Datapage () {
     const classes = styles();
         return (
-            <Grid container spacing={0}>
+            <Paper className = {classes.mainPaperStyle}>
+            <Grid container>
                 <Grid item xs={12}>
                     <Paper className={classes.headerStyle}>
                         <Typography> Add Employee </Typography>
                     </Paper>
                 </Grid>
-                <Sidebar newNavStyle = {classes.sideStyle} />
+                <Grid item xs = {0.8}></Grid>
+                <Sidebar />
                 <Paper className = {classes.paperStyle}>
                     <Divider className = {classes.dividerStyle} />
                     <Grid item xs = {12}>
@@ -82,5 +84,6 @@ export default function Datapage () {
                     </Grid>
                 </Paper>
             </Grid>
+            </Paper>
     )
 }

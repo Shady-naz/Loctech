@@ -9,9 +9,10 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import AuthMessage from "./AuthMessage";
 import FlashMessage from "react-flash-message";
-import {headerStyle, mainLinkStyle, paperStyle} from "./styles/EmployeeSummaryStyles";
+import styles from "./styles/EmployeeSummaryStyles";
 
 export default function EmployeeSummary(props) {
+    const classes = styles();
     
     const employeeObject = {
         totalEmployees: {name: "Total Employees", number: 36, color: "blue"},
@@ -27,21 +28,22 @@ export default function EmployeeSummary(props) {
 
     const employee = Object.keys(employeeObject)
         return (
-            <Paper style={paperStyle}>
+            <Paper className={classes.paperStyle}>
                 { (props.location.state.fromSummary === true) ? ""
                     :  <FlashMessage duration = {3000}> <AuthMessage>  {props.location.state.msg} </AuthMessage> </FlashMessage> 
                 }
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Link to = "/"> <ArrowBackIosIcon style = {{fontSize: "large", width: "50px", height: "25px", color: "black"}} /> </Link>
-                        <Paper style={headerStyle}>
+                        <Paper className={classes.headerStyle}>
                             <Typography> Employee Summary </Typography>
                         </Paper>
                     </Grid>
+                    <Grid item xs = {0.5}></Grid>
                     <Sidebar />
                     <Grid item xs={9}>
                         <Grid item xs={2}>
-                            <Paper style={mainLinkStyle}>
+                            <Paper className={classes.mainLinkStyle}>
                                 <Link style = {{textDecoration: "none", color: "white"}} to = "/personaldata"> 
                                     Add Employee <PersonAddIcon /> 
                                 </Link>
