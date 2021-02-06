@@ -1,71 +1,52 @@
-import React, {Fragment} from "react";
-import AuthDataService from "./services/auth";
-import {useState} from "react";
-import {Redirect} from "react-router-dom";
+import React, {Fragment, useContext } from "react";
+import {Redirect, useLocation, useHistory} from "react-router-dom";
 import LoginForm from "./LoginForm"
 import FlashMessage from "react-flash-message";
+import { authContext } from "./ProvideAuth";
 import AuthMessage from "./AuthMessage";
 
 export default function LoginPage () {
-
-    const [newUser, setNewUser] = useState({
-        username: "",
-        password: ""
-    });
-
-    const [registered, setRegistered] = useState(false);
-    const [error, setError] = useState();
-    
-    const handleInputChange = (evt) => {
-        setNewUser({...newUser, [evt.target.name]: evt.target.value})
-    }
-
-    // const signupUser = async (evt) => {
-    //     evt.preventDefault();
-    //     const data = {
-    //         username: newUser.username,
-    //         password: newUser.password
-    //     }
-    //     const response = await AuthDataService.registerUser(data)
-    //     // console.log(response)
-    //     setRegistered(response.data.success)
-    // }
-
-        const signinUser = async (evt) => {
-            evt.preventDefault();
-            const data = {
-                username: newUser.username,
-                password: newUser.password
-            }
-            const response = await AuthDataService.loginUser(data)
-            console.log(response)
-            setRegistered(response.data.success)
-            setError(response.data.err)
-        }
+    const auth = useContext(authContext)
+    let history = useHistory ();
+    let location = useLocation ();
+    let {from} = location.state || {from: {pathname: "/"}}
 
     return ( 
+       
         <Fragment>
-            {registered ? (
-                <Redirect to =
-                {{
-                    pathname: "/summary",
-                    state: {msg: `Successfully Logged You In as, ${newUser.username} Cheers`}
-                }}
-                /> )   
+            {auth.registered ? (
+                <>
+                {from.pathname === "/" ? <Redirect to = {{ pathname:"/summary", state: {from: "/"} }} /> : history.replace(from, [location.state]) }) </>
+                )   
                 : (
                 <>
-                    {error !== undefined ? 
+                    {auth.error !== undefined ? 
                         (
                             <>
+                                {history.go(0)}
                                 <FlashMessage duration = {3000}> 
                                     <AuthMessage> Invalid Username or Password </AuthMessage>
                                 </FlashMessage>
-                                <LoginForm signinUser = {signinUser} handleInputChange = {handleInputChange}/>
+                                <LoginForm /> 
                             </> 
                         )
-                        : (
-                        <LoginForm signinUser = {signinUser} handleInputChange = {handleInputChange}/>
-                    )}
+                        :  (
+                                <>
+                                    {from.pathname !== "/" ? 
+                                        (
+                                            <>
+                                                <FlashMessage duration = {3000}> 
+                                                    <AuthMessage> You don't have permission to do that. Please Login to view the page at {from.pathname} </AuthMessage>
+                                                </FlashMessage>
+                                                <LoginForm />
+                                            </>
+                                        )
+                                        : (
+                                            <LoginForm />
+                                        )}
+                                </>
+                            )
+                    }    
                 </>
             )}
         </Fragment>

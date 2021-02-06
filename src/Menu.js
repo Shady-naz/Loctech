@@ -1,35 +1,77 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import Menu from '@material-ui/core/Menu';
+// import Button from '@material-ui/core/Button';
 import GroupIcon from '@material-ui/icons/Group';
-import ArrowDropDownOutlinedIcon from '@material-ui/icons/ArrowDropDownOutlined';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import useStyles from "./styles/MenuStyles";
 
-export default function SideMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+export default function SideMenuList() {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
   };
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   return (
-    <div>
-      <Link  to = "/" style = {{color: "black", textDecoration: "none", marginLeft: "13px"}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        <GroupIcon /> Human Resources <ArrowDropDownOutlinedIcon />
-      </Link>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem style = {{backgroundColor: "#009999", padding: 4}} onClick={handleClose}> EM Employee Management </MenuItem>
-      </Menu>
+    <div className={classes.root}>
+      <div>
+        <button
+          ref={anchorRef}
+          aria-controls={open ? 'menu-list-grow' : undefined}
+          aria-haspopup="true"
+          onClick={handleToggle}
+          className = {classes.menuButton}
+        >
+          <GroupIcon style = {{marginLeft: "8px"}} /> Human Resources <ArrowDropDownIcon />
+        </button>
+        <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList className = {classes.menuItem} autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                    <MenuItem  onClick={handleClose}> Employee Management </MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      </div>
     </div>
   );
 }

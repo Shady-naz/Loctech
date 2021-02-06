@@ -4,14 +4,17 @@ import './index.css';
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter} from "react-router-dom";
+// import {ProvideAuth} from "./ProvideAuth";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    {/* <ProvideAuth> */}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    {/* </ProvideAuth> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

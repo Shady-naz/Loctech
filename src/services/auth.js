@@ -8,6 +8,10 @@ class AuthDataService {
     loginUser (data) {
         return router.post("/api/signin", data)
     }
+
+    logoutUser () {
+        return router.post("/api/logout")
+    }
 }
 
 export default new AuthDataService()

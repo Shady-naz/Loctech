@@ -3,30 +3,25 @@ import { makeStyles } from "@material-ui/core/styles";
  const styles = makeStyles(theme => ({
     headerStyle: {
         padding: theme.spacing(1),
-        marginTop: theme.spacing(5),
         backgroundColor: "#009999",
-        marginLeft: theme.spacing(31),
-        marginRight: theme.spacing(25),
+        marginLeft: theme.spacing(28),
+        width: theme.spacing(124.8),
     },
     gridInputStyle: {
-        marginRight: "5px", 
+        marginRight: "25px", 
         marginLeft: "30px"
     },
     dividerStyle: {
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2),
-        marginLeft: theme.spacing(1)
+        marginBottom: theme.spacing(3)
     },
     paperStyle: {
         marginBottom: theme.spacing(25),
-        marginLeft: theme.spacing(3),
-        width: "900px",
-        height: "535px",
-        marginTop: theme.spacing(0)
+        width: "1000px",
+        height: "400px",
+        backgroundColor: "ghostwhite"
     },
     gridLink: {
-        marginTop: theme.spacing(10),
-        // marginLeft: theme.spacing(5)
+        marginTop: theme.spacing(11.8)
     },
     backLinkStyle: {
         backgroundColor: "#6c6e69",
@@ -37,11 +32,10 @@ import { makeStyles } from "@material-ui/core/styles";
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
         marginRight: theme.spacing(40),
-        marginLeft: theme.spacing(4),
         borderRadius: theme.shape.borderRadius,
         "&:hover": {
             textDecoration: "none",
-            color: "slateblue",
+            color: "white",
             fontSize: "15px"
         }
     },
@@ -53,11 +47,11 @@ import { makeStyles } from "@material-ui/core/styles";
         paddingLeft: theme.spacing(2),
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
-        marginLeft: theme.spacing(20),
+        marginLeft: theme.spacing(63.8),
         borderRadius: theme.shape.borderRadius,
         "&:hover": {
             textDecoration: "none",
-            color: "slateblue",
+            color: "white",
             fontSize: "15px"
         }
     }

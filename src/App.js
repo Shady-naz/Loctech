@@ -1,4 +1,4 @@
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import LoginPage from "./LoginPage";
 import DataPage from "./DataPage";
 import InfoPage from "./InfoPage";
@@ -6,18 +6,35 @@ import BankPage from "./BankPage";
 import OtherPage from "./OtherPage";
 import RemainingPage from "./RemainingPage";
 import EmployeeSummary from "./EmployeeSummary";
+import ProvideAuth from "./ProvideAuth";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
+
   return (
-    <div>
-        <Route exact path = "/" component = { LoginPage} />
-        <Route exact path = "/summary" render = { (routeProps) => <EmployeeSummary {...routeProps} /> } />
-        <Route exact path = "/personaldata" component = { DataPage } />
-        <Route exact path = "/info" component = { InfoPage } />
-        <Route exact path = "/bank" component = { BankPage } />
-        <Route exact path = "/otherdata" component = { OtherPage } />
-        <Route exact path = "/remainingdata" component = { RemainingPage } />
-    </div>
+      <ProvideAuth>
+          <Route exact path = "/" component = { LoginPage } />
+          <Switch>
+            <PrivateRoute  path = "/summary">
+                <EmployeeSummary />
+            </PrivateRoute>
+            <PrivateRoute path = "/personaldata">
+              <DataPage />
+            </PrivateRoute>
+            <PrivateRoute path = "/info" >
+              <InfoPage />
+            </PrivateRoute>
+            <PrivateRoute path = "/bank" >
+              < BankPage />
+            </PrivateRoute>
+            <PrivateRoute path = "/otherdata" >
+              <OtherPage />
+            </PrivateRoute>
+            <PrivateRoute path = "/remainingdata" >
+              <RemainingPage />
+            </PrivateRoute>
+          </Switch>
+      </ProvideAuth>
   );
 }
 
