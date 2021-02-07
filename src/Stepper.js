@@ -14,24 +14,23 @@ import StepConnector from '@material-ui/core/StepConnector';
 const ColorlibConnector = withStyles({
     alternativeLabel: {
       top: 22,
+      // left: 'calc(-50% + 16px)',
+      // right: 'calc(50% + 16px)',
     },
     active: {
       '& $line': {
         backgroundImage: 
           'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
-          transition: "height 0.5s ease"
       }
     },
     completed: {
       '& $line': {
         backgroundImage: 'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
-        transition: "0.5s ease"
-      },
+      }
     },
     line: {
       height: 3,
       border: 0,
-      transition: "0.5s ease",
       backgroundColor: '#eaeaf0',
       borderRadius: 1,
     },
@@ -83,17 +82,8 @@ const ColorlibConnector = withStyles({
   }
   
   ColorlibStepIcon.propTypes = {
-    /**
-     * Whether this step is active.
-     */
     active: PropTypes.bool,
-    /**
-     * Mark the step as completed. Is passed to child components.
-     */
     completed: PropTypes.bool,
-    /**
-     * The label displayed in the step icon.
-     */
     icon: PropTypes.node,
   };
   
